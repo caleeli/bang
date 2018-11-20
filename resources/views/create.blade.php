@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }} - Create match</title>
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -25,7 +25,7 @@
   </head>
   <body>
     <div id="app">
-        <layout></layout>
+        <create-match></create-match>
     </div>
     <script>
         window.onload = function () {
@@ -34,5 +34,5 @@
             });
         };
     </script>
-  </body>
+    </body>
 </html>
