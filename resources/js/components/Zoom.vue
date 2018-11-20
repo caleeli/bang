@@ -1,6 +1,6 @@
 <template>
     <div>
-        TODO
+        Zoom
     </div>
 </template>
 
