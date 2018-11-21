@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/match/create', function () {
+        return view('create');
+    });
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
 });
 
-Route::get('/match/create', function () {
-    return view('create');
-});
+Auth::routes();
