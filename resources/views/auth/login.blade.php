@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    html, body, .container {
+        height: 100%;
+        overflow: hidden;
+    }
+    body {
+            background-image: url(/images/login.jpg);
+            background-position: center;
+        }
+    .card {
+        background-color: rgba(255,155,55,0.7);
+    }
+    @media screen and (orientation : landscape) {
+        body {
+            background-size: 100% auto;
+        }
+    }
+    @media screen and (orientation : portrait) {
+        body {
+            background-size: auto 100%;
+        }
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
