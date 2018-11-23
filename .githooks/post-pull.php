@@ -1,4 +1,3 @@
 <?php
-run('composer update');
-run('npm install');
-run('npm run prod');
+run('composer update', true);
+run('npm install; npm run prod', true);
