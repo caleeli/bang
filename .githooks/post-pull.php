@@ -1,3 +1,4 @@
 <?php
-run('composer update', true);
-run('npm install; npm run prod', true);
+//Run in parallel composer and npm
+run('composer update');
+run('npm install; npm run prod');
