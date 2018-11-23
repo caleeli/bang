@@ -11,14 +11,18 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/', function () {
-        return view('welcome');
+    Route::get('/create', function () {
+        return view('create');
     });
 
-    Route::get('/match/create', function () {
-        return view('create');
+    Route::get('/join', function () {
+        return view('join');
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
