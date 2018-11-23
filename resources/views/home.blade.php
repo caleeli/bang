@@ -7,7 +7,7 @@
         overflow: hidden;
     }
     body {
-            background-image: url(/images/welcome.jpg);
+            background-image: url(/images/login.jpg);
             background-position: center;
         }
     .card {
@@ -29,7 +29,7 @@
             <div class="col-4"></div>
         <div class="col-8">
             <div class="card">
-                <div class="card-header"><h1 class="text-white">Bienvenido al juego de mesa online</h1></div>
+            <div class="card-header"><h1 class="text-white">{{Auth::user()->name}}</h1></div>
                 <div class="card-body">
                     <h1 class="text-white"></h1>
                     <h3>Tu puedes:</h3>
