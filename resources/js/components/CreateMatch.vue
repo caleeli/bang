@@ -2,26 +2,28 @@
     <div class="create-match full-screen">
         <panel title-color="lightsalmon" class="panel-left">
             <template slot="title">
-                <input class="form-control-transparent" v-model="match.name">
+                <input class="form-control-transparent" v-model="value.name">
             </template>
             <template>
-                <player-select v-for="(player,key) in match.players" :key="key" :value="player"></player-select>
+                <player-select v-for="(player,key) in value.players" :key="key" :value="player"></player-select>
             </template>
         </panel>
     </div>
 </template>
 
 <script>
+
     export default {
+        props: {
+            value: Object,
+        },
         data() {
             return {
-                match: {
-                    name: 'Nombre de partida',
-                    players: [
-                        {name:"Player 1"}
-                    ]
-                }
             };
+        },
+        mounted() {
+            $(window).on("unload", e => {
+            });
         }
     }
 </script>

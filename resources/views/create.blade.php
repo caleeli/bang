@@ -25,12 +25,17 @@
   </head>
   <body>
     <div id="app">
-        <create-match></create-match>
+        <create-match v-model='match'></create-match>
     </div>
     <script>
         window.onload = function () {
             var app = new Vue({
-                el: '#app'
+                el: '#app',
+                data: function () {
+                    return {
+                        match: @json($match)
+                    };
+                }
             });
         };
     </script>
