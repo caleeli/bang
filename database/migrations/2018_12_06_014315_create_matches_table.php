@@ -16,6 +16,7 @@ class CreateMatchesTable extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->enum('type', ['normal', 'versus']);
             $table->timestamps();
         });
     }

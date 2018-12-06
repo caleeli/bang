@@ -1,10 +1,11 @@
 <template>
     <div class="b-player-select">
         <div class="b-player-select-avatar">
-            <i class="fas fa-user"></i>
+            <img :src="value.avatar">
         </div>
         <div class="b-player-select-name">
             {{value.name}}
+            <button type="button" class="btn btn-sm btn-secondary float-right" @click="remove">X</button>
         </div>
     </div>
 </template>
@@ -13,6 +14,11 @@
     export default {
         props: {
             value: Object,
+        },
+        methods: {
+            remove() {
+                this.$emit('remove', this.value);
+            }
         }
     }
 </script>
@@ -28,6 +34,10 @@
         height: 100%;
         margin: auto;
         background-color: rgba(255,255,255,0.8);
+    }
+    .b-player-select-avatar img {
+        width: 100%;
+        height: 100%;
     }
     .b-player-select-name {
         flex: 2 0 0;

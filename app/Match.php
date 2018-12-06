@@ -12,18 +12,8 @@ class Match extends Model
 {
 
     protected $fillable = [
-        'name'
+        'name', 'type'
     ];
-    /**
-     * Lista de jugadores
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    /*public function players()
-    {
-        return $this->hasManyThrough(User::class, Player::class, 'match_id',
-                'id', $this->getKeyName(), 'user_id');
-    }*/
 
     /**
      * Lista de jugadores

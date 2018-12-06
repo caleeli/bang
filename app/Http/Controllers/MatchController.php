@@ -26,7 +26,7 @@ class MatchController extends Controller
      */
     public function create()
     {
-        return view('create',
+        return view('match.create',
             ['match' => [
                 'name' => 'Nueva partida',
                 'players' => [
@@ -43,14 +43,14 @@ class MatchController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->json();
-        $match = new Match([
-            'name' => $data->name,
-        ]);
-        foreach ($data->players as $player) {
-            $match->players()->attach($player->id);
-        }
+        $data = $request->input();
+        $match = new Match($data);
         $match->save();
+        foreach ($data['players'] as $player) {
+            $match->players()->attach($player['id']);
+        }
+        return response()->json($match, 201)
+                ->header('Location', url('/match/' . $match->id));
     }
 
     /**
@@ -61,7 +61,7 @@ class MatchController extends Controller
      */
     public function show(Match $match)
     {
-        //
+        return response()->json($match);
     }
 
     /**
@@ -72,7 +72,8 @@ class MatchController extends Controller
      */
     public function edit(Match $match)
     {
-        //
+        $match->players;
+        return view('match.edit', ['match' => $match]);
     }
 
     /**
