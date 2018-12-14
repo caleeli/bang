@@ -17,6 +17,7 @@ class CreatePlayersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('match_id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('team')->default(1);
             $table->timestamps();
             $table->foreign('match_id')->references('id')->on('matches');
             $table->foreign('user_id')->references('id')->on('users');

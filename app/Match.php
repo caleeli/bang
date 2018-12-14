@@ -22,6 +22,6 @@ class Match extends Model
      */
     public function players()
     {
-        return $this->belongsToMany(User::class, 'players');
+        return $this->belongsToMany(User::class, 'players')->withPivot(['id', 'team']);
     }
 }

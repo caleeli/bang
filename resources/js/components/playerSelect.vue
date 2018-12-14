@@ -5,7 +5,10 @@
         </div>
         <div class="b-player-select-name">
             {{value.name}}
-            <button type="button" class="btn btn-sm btn-secondary float-right" @click="remove">X</button>
+            <div class='float-right'>
+                <slot></slot>
+                <button type="button" class="btn btn-sm btn-secondary" @click="remove">X</button>
+            </div>
         </div>
     </div>
 </template>

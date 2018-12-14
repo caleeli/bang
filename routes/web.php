@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('match', 'MatchController');
+    Route::resource('players', 'PlayerController');
 
     Route::get('/join', function () {
         return view('join');

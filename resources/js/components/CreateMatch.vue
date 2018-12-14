@@ -5,7 +5,7 @@
             <input class='form-control btn-warning col-10' v-model='value.name'>
         </center>
         <div class="row">
-            <div class="col-6">
+            <div class="offset-1 col-4">
                 <panel title-color="lightsalmon" class="panel-left">
                     <template slot="title">
                         <div style='padding: 0em 0.5em'>PARTIDA NORMAL</div>
@@ -17,7 +17,7 @@
                     </template>
                 </panel>
             </div>
-            <div class="col-6">
+            <div class="offset-1 col-4">
                 <panel title-color="lightsalmon" class="panel-right">
                     <template slot="title">
                         <div style='padding: 0em 0.5em'>VERSUS</div>

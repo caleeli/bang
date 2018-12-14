@@ -1,7 +1,7 @@
 <template>
     <div class="create-match full-screen">
         <div class="row">
-            <div class="col-6">
+            <div class="offset-1 col-4">
                 <panel title-color="lightsalmon" class="panel-left">
                     <template slot="title">
                         <input class="form-control-transparent" v-model="value.name">
@@ -12,7 +12,7 @@
                 </panel>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style='margin-top:4em'>
             <div class="col-6">
             </div>
             <div class="col-5">

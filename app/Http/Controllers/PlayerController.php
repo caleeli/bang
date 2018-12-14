@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -69,7 +70,8 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $player->fill($request->all())->save();
+        return $player;
     }
 
     /**

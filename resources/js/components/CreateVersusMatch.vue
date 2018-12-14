@@ -1,18 +1,44 @@
 <template>
     <div class="create-match full-screen">
         <div class="row">
-            <div class="col-6">
+            <div class="offset-1 col-4">
                 <panel title-color="lightsalmon" class="panel-left">
                     <template slot="title">
-                        <input class="form-control-transparent" v-model="value.name">
+                        <div style='padding: 0em 0.5em'>EQUIPO 1</div>
                     </template>
                     <template>
-                        <player-select v-for="(player,key) in value.players" :key="key" :value="player" @remove="remove"></player-select>
+                        <player-select v-for="(player,key) in value.players"
+                                       v-if='player.pivot.team===1'
+                                       :key="key"
+                                       :value="player"
+                                       @remove="remove">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" @click="changeTeam(player, 2)">
+                                >
+                            </button>
+                        </player-select>
+                    </template>
+                </panel>
+            </div>
+            <div class="offset-2 col-4">
+                <panel title-color="lightsalmon" class="panel-left">
+                    <template slot="title">
+                        <div style='padding: 0em 0.5em'>EQUIPO 2</div>
+                    </template>
+                    <template>
+                        <player-select v-for="(player,key) in value.players"
+                                       v-if='player.pivot.team===2'
+                                       :key="key"
+                                       :value="player"
+                                       @remove="remove">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" @click="changeTeam(player, 1)">
+                                <
+                            </button>
+                        </player-select>
                     </template>
                 </panel>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style='margin-top:4em'>
             <div class="col-6">
             </div>
             <div class="col-5">
@@ -30,16 +56,37 @@
         },
         data() {
             return {
+                listeners: [],
             };
         },
         methods: {
             remove(player) {
                 const index = this.value.players.indexOf(player);
                 this.value.players.splice(index, 1);
-            }
+            },
+            changeTeam(player, team) {
+                axios.patch('/players/' + player.pivot.id, {
+                    'team': team,
+                });
+            },
+            loadPlayers() {
+                axios.get('/matches/' + this.value.id)
+                        .then((response) => {
+                            const match = response.data;
+                            Vue.set(this.value, 'players', match.players);
+                        });
+            },
         },
         mounted() {
-        }
+            /*this.listeners.push(listen.model('App\\Player', () => {
+                this.loadPlayers();
+            }));*/
+        },
+        unmount() {
+            this.listeners.forEach((listener) => {
+                //listen.detach(listener);
+            });
+        },
     }
 </script>
 
